@@ -1,0 +1,26 @@
+           int club_choice;
+            std::cin >> club_choice;
+            if (club_choice >= 1 && club_choice <= clubs.size()) {
+                if (clubs[club_choice-1].members.size() < clubs[club_choice-1].max_capacity) {
+                    student.activities.push_back(clubs[club_choice-1].name);
+                    clubs[club_choice-1].members.push_back(student);
+                } else {
+                    std::cout << "Club/Society is at full capacity.\n";
+                }
+            }
+        }
+    } while (choice != 3);
+
+    students.push_back(student);
+}
+
+void viewStudents() {
+    for (const auto& student : students) {
+        std::cout << "Name: " << student.firstname << " " << student.surname << ", Gender: " << student.gender << ", Age: " << student.age << ", Group: " << student.group << "\n";
+        std::cout << "Activities: ";
+        for (const auto& activity : student.activities) {
+            std::cout << activity << " ";
+        }
+        std::cout << "\n";
+    }
+}
